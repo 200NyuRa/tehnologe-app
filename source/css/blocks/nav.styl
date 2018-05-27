@@ -1,0 +1,267 @@
+.nav {
+	$marginX = 32px
+
+	@media $smallTablet {
+		position: fixed
+		visibility hidden
+		opacity: 0
+		overflow hidden
+		overflow-y auto
+		background: alpha(#000, .70)
+		padding-top: 64px
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		font-size: 0
+		white-space: nowrap
+		overflow: auto
+		-webkit-overflow-scrolling: touch
+		box-shadow 0 3px 5px 0 rgba(100, 100, 100, .1)
+		transition  visibility $duration, opacity $duration
+
+		&:after {
+			position: absolute
+			display: block
+			background: $bgColorLight
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+		}
+	}
+
+	&__inner {
+		display flex
+		align-items: center
+		text-transform: uppercase
+
+		@media $smallTablet {
+			flex-direction: column
+			text-align: center
+			width: 100%
+			background: $bgColorLight
+			transform: translateY(-100%)
+			transition transform $duration $easeOutCubic
+		}
+
+	}
+
+	&__item {
+		flex-shrink 0
+		padding: 0 5px
+
+		@media $smallTablet {
+			padding: 0
+			border-bottom: 1px solid $neutralColor
+			width: 100%
+
+			&:last-child {
+				border-bottom none
+			}
+		}
+	}
+	&__link {
+		width: 100%
+		display inline-block
+		vertical-align: top
+		position: relative
+		margin: 0 -5px
+		padding: 10px 5px
+		font-size 12px
+		color $textColor
+		font-weight bold
+
+		@media $smallTablet {
+			color: $linkColor
+			padding: 10px 20px
+			transition: color $duration, background $duration
+		}
+
+		&:hover {
+			@media $smallTablet {
+				color: $textColor
+				background: $linkColor
+			}
+		}
+
+		&:hover .nav__link-text:before {
+			transform: scale(1)
+
+			@media $smallTablet {
+				transform: scale(0)
+			}
+		}
+
+		&_sticker {
+			padding-right: 30px
+		}
+	}
+
+	&__link-text {
+		white-space: nowrap
+		position: relative
+
+		&:before {
+			content: ''
+			display: block
+			position: absolute
+			height: 1px
+			width: 100%
+			left: 0
+			bottom: -1px
+			background: alpha($textColor, 0.5)
+			transform: scale(0)
+			transition: transform $duration
+
+			@media $smallTablet {
+				display: none
+			}
+		}
+
+		&_link-icon {
+			display: none
+
+			@media $smallTablet {
+				display: block
+			}
+		}
+	}
+
+	&__link-icon {
+		display: inline-block
+		margin: -5px 0
+		vertical-align: top
+		width: 30px
+		height: 30px
+		border-radius 50%
+		icon-megafon()
+		background: $extraColor
+		color: $textDarkColor
+		text-align: center
+		font-size: 16px
+		line-height: 30px
+
+		@media $smallTablet {
+			width: 100%
+			height: auto
+			border-radius 0
+			font-weight: bold
+			font-size: 12px
+			color: $linkColor
+			padding: 10px 20px
+			background: transparent
+			transition: color $duration, background $duration
+			border none
+			margin: 0
+			line-height: 18px
+		}
+
+		&:before {
+			@media $smallTablet {
+				display: none
+			}
+		}
+
+		&:hover {
+			background: darken($extraColor, 5%)
+
+			@media $smallTablet {
+				color: $textColor
+				background: darken($linkColor, 5%)
+			}
+		}
+	}
+
+	&__sticker {
+		display: block
+		position: absolute
+		top: -13px
+		right: -15px
+		pointer-events none
+		color: alpha($extraColor, .9)
+		font-size: 10px
+		line-height: 12px
+		text-transform: uppercase
+		border-top: 1px solid alpha($extraColor, .9)
+		border-bottom: 1px solid alpha($extraColor, .9)
+		transform: rotate(30deg)
+		transform-origin: 50% 50%
+
+		@media $smallTablet {
+			top: 0
+			right: -100px
+			transform: rotate(30deg)
+		}
+	}
+
+	&__log-in {
+		color: alpha($textColor, .9)
+	}
+
+	&__button {
+		padding 0 20px
+		line-height 46px
+		min-width: 140px
+		display inline-block
+		vertical-align: top
+		text-align center
+		font-weight bold
+		cursor pointer
+		text-transform: uppercase
+		font-size 12px
+		transition color $duration $easeOutSine, background $duration $easeOutSine
+
+		@media $desktop {
+			line-height 40px
+			min-width: 110px
+		}
+
+		&:hover {
+			faster()
+		}
+
+		&_primary {
+			color: $textColor
+			background: $linkColor
+
+			@media $smallTablet {
+				width: calc(100% - 40px)
+				margin: 10px 20px
+			}
+
+			&:hover {
+				background: darken($linkColor, 5%)
+			}
+		}
+
+		&_neutral {
+			color: $textDarkColor
+			background: $extraColor
+
+
+			@media $smallTablet {
+				width: 100%
+				height: auto
+				border-radius 0
+				font-weight: bold
+				font-size: 12px
+				line-height: 18px
+				color: $linkColor
+				padding: 10px 20px
+				background: transparent
+				border none
+				transition: color $duration, background $duration
+			}
+
+			&:hover {
+				background: darken($extraColor, 5%)
+
+				@media $smallTablet {
+					color: $bgColorLight
+					background: darken($linkColor, 5%)
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+/*** --- Reset CSS --- ***/
+@import 'reset.styl'
+
+
+/*** --- Mixins and variables --- ***/
+@import 'common/helpers.styl'
+@import 'common/variables.styl'
+@import 'common/easings.styl'
+@import 'common/mixins.styl'
+
+/*** --- Fonts --- ***/
+// webfont('Font Name', 'font-file-name')
+// webfont('Font Name', 'font-file-name', bold, italic)
+@import '../../public/iconfont/iconfont.styl'
+
+*, *:before, *:after {
+	box-sizing border-box
+}
+/*** --- Document --- ***/
+html,
+body {
+	height 100%
+	color $textColor
+	font normal $fontSize/$lineHeight $fontFamily
+	-webkit-text-size-adjust 100%
+	-moz-osx-font-smoothing grayscale
+	smooth-font()
+}
+
+
+/*** --- Links --- ***/
+a {
+	color $linkColor
+	text-decoration none
+}
+
+/*** --- Blocks --- ***/
+@import 'blocks/container';
+@import 'blocks/page';
+@import 'blocks/link';
+@import 'blocks/button';
+@import 'blocks/hamburger';
+@import 'blocks/nav';
+@import 'blocks/lang';
+@import 'blocks/text';
+@import 'blocks/header';
+@import 'blocks/footer';

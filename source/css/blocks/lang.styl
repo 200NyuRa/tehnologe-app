@@ -1,0 +1,109 @@
+.lang {
+	$buttonHeight = 22px
+	display: none
+
+	&__button {
+		icon-expand-more('after')
+		position relative
+		display flex
+		align-items center
+		justify-content space-between
+		height $buttonHeight
+		width 70px
+		padding-left 5px
+		padding-right 5px
+		font-size 12px
+		text-transform: uppercase
+		cursor pointer
+		outline none
+
+		&:after {
+			color: $extraColor
+			flex-shrink 0
+			order 1
+			margin-left 4px
+			line-height 1
+			font-size 6px
+			transition transform ($duration/ 2)
+		}
+
+		&:before {
+			content: ''
+			display: block
+			position: absolute
+			height: 1px
+			width: 100%
+			left: 0
+			bottom: 0
+			background: alpha($textColor, 0.5)
+			transition: transform $duration
+
+			.select2-container--open & {
+				transform: scale(0)
+			}
+		}
+
+		.select2-container--open & {
+			&:after {
+				transform rotate(-180deg)
+			}
+		}
+	}
+	&__dropdown {
+		overflow hidden
+		display block
+		padding-bottom 0
+		padding-top: 10px
+		z-index 999
+		background: #fff
+		transition transform $duration
+		border: 1px solid $neutralColor
+
+		& .select2-results__option {
+			height 30px
+			padding-left 5px
+			padding-right 5px
+			font-size 13px
+			white-space nowrap
+			overflow hidden
+			text-overflow ellipsis
+			color: $textDarkColor
+			transition color ($duration/ 2)
+			cursor: pointer
+			&:hover {
+				color $extraColor
+			}
+			&[aria-selected=true] {
+				display none
+			}
+		}
+
+	}
+	&__dropdown-icon {
+		flex-shrink 0
+		display block
+		width 20px
+		height 14px
+		margin-right 10px
+		background-size contain
+		background-repeat no-repeat
+		background-position center center
+		&_de {
+			background-image url("../images/flags/de.svg")
+		}
+		&_en {
+			background-image url("../images/flags/en.svg")
+		}
+		&_ru {
+			background-image url("../images/flags/ru.svg")
+		}
+	}
+	&__field {
+		display flex
+		align-items center
+	}
+}
+
+.select2-search__field {
+	display: none
+}

@@ -1,0 +1,10 @@
+.link {
+	& {
+		color $linkColor
+		transition color $duration
+	}
+	&:hover {
+		color darken($linkColor, .30)
+		faster()
+	}
+}

@@ -1,0 +1,52 @@
+.page {
+	position relative
+	overflow hidden
+	display flex
+	flex-direction column
+	min-width 320px
+	min-height 100%
+	padding-top: 100px
+	background $bgColor url(/images/main-bg.jpg) no-repeat 50% 50%
+	background-size: cover
+	z-index: 1
+
+	@media $smallTablet {
+		padding-top: 60px
+	}
+
+	&:after {
+		content: ''
+		display: block
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		background: rgba(#292C33,.1);
+		background-image: linear-gradient(to top,transparent 0%,rgba(#464855,.45) 50%,rgba(#464855, .45) 100%);
+		pointer-events: none
+		z-index: -1
+	}
+
+	&__container {
+		flex: 1 0 auto
+		@extend .container
+	}
+
+	&__text {
+		max-width: 800px
+
+		@media $smallTablet {
+			max-width: 650px
+		}
+	}
+	&__content {
+		padding-top: 100px
+		padding-bottom: 100px
+
+		@media $smallPhone {
+			padding-top: 40px
+			padding-bottom: 40px
+		}
+	}
+}
